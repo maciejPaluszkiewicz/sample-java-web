@@ -1,5 +1,6 @@
 package com.codecool.krk;
 
+
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 
@@ -10,14 +11,22 @@ public class App {
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 
         // set routes
-        server.createContext("/hello", new Hello());
-        server.createContext("/form", new Form());
-        server.createContext("/cookie", new Cookie());
         server.createContext("/static", new Static());
-        server.createContext("/template", new Template());
+        server.createContext("/index", new Index());
+        server.createContext("/login", new Login());
+        server.createContext("/guestbook", new Guestbook());
         server.setExecutor(null); // creates a default executor
+
+
+//        server.createContext("/hello", new Hello());
+//        server.createContext("/form", new Form());
+//        server.createContext("/cookie", new Cookie());
+//        server.createContext("/template", new Template());
+
+
 
         // start listening
         server.start();
+        System.out.println("zomg server started!");
     }
 }

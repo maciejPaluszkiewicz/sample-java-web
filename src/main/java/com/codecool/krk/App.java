@@ -17,13 +17,8 @@ public class App {
         server.createContext("/guestbook", new Guestbook());
         server.setExecutor(null); // creates a default executor
 
-
-//        server.createContext("/hello", new Hello());
 //        server.createContext("/form", new Form());
 //        server.createContext("/cookie", new Cookie());
-//        server.createContext("/template", new Template());
-
-
 
         // start listening
         server.start();

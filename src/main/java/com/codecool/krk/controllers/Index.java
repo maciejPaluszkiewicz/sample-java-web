@@ -1,4 +1,4 @@
-package com.codecool.krk;
+package com.codecool.krk.controllers;
 
 import org.jtwig.JtwigModel;
 

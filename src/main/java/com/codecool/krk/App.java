@@ -1,6 +1,10 @@
 package com.codecool.krk;
 
 
+import com.codecool.krk.controllers.Guestbook;
+import com.codecool.krk.controllers.Index;
+import com.codecool.krk.controllers.Login;
+import com.codecool.krk.controllers.Static;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 

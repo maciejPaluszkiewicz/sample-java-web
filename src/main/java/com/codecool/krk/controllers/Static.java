@@ -1,4 +1,4 @@
-package com.codecool.krk;
+package com.codecool.krk.controllers;
 
 import com.codecool.krk.helpers.MimeTypeResolver;
 import com.sun.net.httpserver.HttpExchange;

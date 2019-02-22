@@ -1,15 +1,13 @@
 package com.codecool.krk.helpers;
 
-import java.security.*;
-
 public class HashHelper {
 
-    public String createHash(String str) throws Exception{
-        byte[] bytesOfMessage = str.getBytes("UTF-8");
+    public static String createHash(String str){
 
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] theDigest = md.digest(bytesOfMessage);
-
-        return new String(theDigest);
+        int hash = 7;
+        for (int i = 0; i < str.length(); i++) {
+            hash = hash*31 + str.charAt(i);
+        }
+        return Integer.toString(hash);
     }
 }

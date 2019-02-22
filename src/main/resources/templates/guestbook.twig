@@ -7,6 +7,18 @@
     <link rel="stylesheet" type="text/css" href="../static/css/guestbook.css">
 </head>
 <body>
+    <h1>Guestbook</h1>
+    <h2> Welcome {{username}}!</h2>
+
+    {% for message in messages %}
+        <div class="message">
+            <div class="user">{{message.getUser()}}</div>
+            <div class="date">{{message.getDate()}}</div>
+            <div class="text">{{message.getText()}}</div>
+        </div>
+    {% endfor %}
+
+// TODO: form
 
 </body>
 </html>

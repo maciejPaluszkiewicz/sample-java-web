@@ -7,6 +7,7 @@ import org.jtwig.JtwigTemplate;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.SQLException;
 
 public abstract class TemplateHandler implements HttpHandler {
 

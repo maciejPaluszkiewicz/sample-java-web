@@ -7,6 +7,24 @@
     <link rel="stylesheet" type="text/css" href="../static/css/login.css">
 </head>
 <body>
+<main>
+    <h1>Please log in</h1>
+    {% if (Error) %}
+        <p>{{ Error }}</p>
+    {% endif %}
+
+    <form method="POST" action="/login">
+        <label>User Name</label>
+        <input type="text" name="login">
+        <label>Password</label>
+        <input type="password" name="password">
+        <button type="submit">Login</button>
+    </form>
+
+    <!--<a href="/guestbook">Continue as guest</a>-->
+    <a href="/index">Back to main page</a>
+
+</main>
 
 </body>
 </html>

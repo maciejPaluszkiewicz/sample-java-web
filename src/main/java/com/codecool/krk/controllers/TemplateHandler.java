@@ -32,7 +32,7 @@ public abstract class TemplateHandler implements HttpHandler {
         String response = template.render(model);
         System.out.println(response);
 
-//        httpExchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
+        httpExchange.getResponseHeaders().add("Content-Type", "text/html");
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
         byte[] bytes = response.getBytes(StandardCharsets.UTF_8);

@@ -1,13 +1,11 @@
 package com.codecool.krk;
 
-
 import com.codecool.krk.controllers.Guestbook;
 import com.codecool.krk.controllers.Index;
 import com.codecool.krk.controllers.Login;
 import com.codecool.krk.controllers.Static;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
-
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -20,9 +18,6 @@ public class App {
         server.createContext("/login", new Login());
         server.createContext("/guestbook", new Guestbook());
         server.setExecutor(null); // creates a default executor
-
-//        server.createContext("/form", new Form());
-//        server.createContext("/cookie", new Cookie());
 
         // start listening
         server.start();

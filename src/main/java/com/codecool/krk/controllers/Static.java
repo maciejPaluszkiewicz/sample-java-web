@@ -3,7 +3,6 @@ package com.codecool.krk.controllers;
 import com.codecool.krk.helpers.MimeTypeResolver;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -33,14 +32,13 @@ public class Static implements HttpHandler {
             // Object exists and is a file: accept with response code 200.
             sendFile(httpExchange, fileURL);
         }
-
     }
 
     private void send404(HttpExchange httpExchange) throws IOException {
         String response = "404 (Not Found)\n";
         httpExchange.sendResponseHeaders(404, response.length());
         OutputStream os = httpExchange.getResponseBody();
-        os.write(response.toString().getBytes());
+        os.write(response.getBytes());
         os.close();
     }
 
@@ -65,6 +63,4 @@ public class Static implements HttpHandler {
         }
         os.close();
     }
-
-
 }

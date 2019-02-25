@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class LoginDAOfromPSQL implements LoginDAO{
 
-    DataBaseConnector dbcon = new DataBaseConnector();
+    private DataBaseConnector dbcon = new DataBaseConnector();
 
     @Override
     public boolean checkIfLoginAndPasswordAreCorrect(String login, String hashPassword) throws SQLException {

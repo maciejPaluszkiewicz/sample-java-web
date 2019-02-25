@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MessageDAOfromPSQL implements MessageDAO {
 
-    DataBaseConnector dbcon = new DataBaseConnector();
+    private DataBaseConnector dbcon = new DataBaseConnector();
 
     @Override
     public List<Message> getAllMessages() throws Exception {
@@ -21,7 +21,6 @@ public class MessageDAOfromPSQL implements MessageDAO {
             result.add(new Message(rs.getString("user"), rs.getDate("date"),
                     rs.getString("text")));
         }
-
         return result;
     }
 
@@ -30,7 +29,5 @@ public class MessageDAOfromPSQL implements MessageDAO {
         String query = "INSERT INTO messages (\"user\", \"date\", \"text\") VALUES (?, ?::date, ?);";
         String[] queryAttr = {message.getUser(), message.getDate().toString(), message.getText()};
         dbcon.updateSQL(query, queryAttr);
-
     }
 }
-//String.format("%1$tb %1$te, %1$tY %1$tI:%1$tM %1$Tp", date)

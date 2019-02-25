@@ -4,11 +4,9 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLException;
 
 public abstract class TemplateHandler implements HttpHandler {
 
@@ -32,12 +30,12 @@ public abstract class TemplateHandler implements HttpHandler {
         String response = template.render(model);
         System.out.println(response);
 
-        httpExchange.getResponseHeaders().add("Content-Type", "text/html");
-        httpExchange.sendResponseHeaders(200, response.length());
-        OutputStream os = httpExchange.getResponseBody();
         byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
+
+        httpExchange.sendResponseHeaders(200, bytes.length);
+        OutputStream os = httpExchange.getResponseBody();
+
         os.write(bytes);
-        System.out.println("dupa");
         os.close();
     }
 

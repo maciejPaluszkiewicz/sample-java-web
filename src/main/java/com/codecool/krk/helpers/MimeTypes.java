@@ -1,10 +1,6 @@
 package com.codecool.krk.helpers;
-
 // Copyright (c) 2003-2009, Jodd Team (jodd.org). All Rights Reserved.
-
-
 import java.util.HashMap;
-
 /**
  * Map file extensions to MIME types. Based on the Apache mime.types file.
  * http://www.iana.org/assignments/media-types/

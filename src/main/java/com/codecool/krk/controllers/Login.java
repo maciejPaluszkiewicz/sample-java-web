@@ -34,7 +34,6 @@ public class Login extends TemplateHandler {
             CookieHelper.deleteCookie(httpExchange, CookieHelper.COOKIE_USERNAME);
             super.handle(httpExchange);
         } else {
-
             try {
                 String formData = FormHelper.formData(httpExchange);
                 Map <String, String> inputs = FormHelper.parseFormData(formData);
@@ -46,7 +45,6 @@ public class Login extends TemplateHandler {
                     CookieHelper.setCookie(httpExchange, CookieHelper.COOKIE_USERNAME, inputs.get("login"));
                     httpExchange.getResponseHeaders().set("Location", "/guestbook");
                     httpExchange.sendResponseHeaders(302,0);
-
                 } else {
                     errorMsg = "Login and/or password incorrect. Please try again.";
                     super.handle(httpExchange);
@@ -60,6 +58,4 @@ public class Login extends TemplateHandler {
             }
         }
     }
-
-
 }

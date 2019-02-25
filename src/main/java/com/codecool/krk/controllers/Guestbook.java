@@ -7,7 +7,6 @@ import com.codecool.krk.helpers.FormHelper;
 import com.codecool.krk.model.Message;
 import com.sun.net.httpserver.HttpExchange;
 import org.jtwig.JtwigModel;
-
 import java.io.IOException;
 import java.net.HttpCookie;
 import java.util.Date;
@@ -46,7 +45,6 @@ public class Guestbook extends TemplateHandler {
             super.handle(httpExchange);
         } else {
             try {
-                System.out.println("Pojebane rzeczy 2");
                 String formData = FormHelper.formData(httpExchange);
                 Map<String, String> inputs = FormHelper.parseFormData(formData);
                 Message message = new Message(username, new Date(), inputs.get("textmessage"));
@@ -54,7 +52,6 @@ public class Guestbook extends TemplateHandler {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             httpExchange.getResponseHeaders().set("Location", "/guestbook");
             httpExchange.sendResponseHeaders(302, 0);
         }

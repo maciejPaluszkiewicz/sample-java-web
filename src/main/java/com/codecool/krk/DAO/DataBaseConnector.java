@@ -15,7 +15,6 @@ public class DataBaseConnector {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return conn;
     }
 
@@ -29,12 +28,10 @@ public class DataBaseConnector {
         if(sql.contains("?") && sql.split("\\?").length != attr.length) {
             throw new InvalidParameterException();
         }
-
         int i = 1;
         for(String s: attr) {
             pstmt.setString(i++, s);
         }
-
         ResultSet rs = pstmt.executeQuery();
 //            pstmt.close();
 //            this.conn.close();
@@ -47,7 +44,6 @@ public class DataBaseConnector {
         for(int i = 1; i <= queryAttr.length; ++i) {
             pstmt.setString(i, queryAttr[i - 1]);
         }
-
         pstmt.executeUpdate();
 //        pstmt.close();
         conn.commit();

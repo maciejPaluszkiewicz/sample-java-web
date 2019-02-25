@@ -8,10 +8,7 @@ import com.codecool.krk.helpers.HashHelper;
 import com.codecool.krk.helpers.SessionHelper;
 import com.sun.net.httpserver.HttpExchange;
 import org.jtwig.JtwigModel;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Map;
 
 public class Login extends TemplateHandler {
@@ -34,27 +31,18 @@ public class Login extends TemplateHandler {
 
         errorMsg = null;
         if(httpExchange.getRequestMethod().equals("GET")){
+            CookieHelper.deleteCookie(httpExchange, CookieHelper.COOKIE_USERNAME);
             super.handle(httpExchange);
         } else {
-            InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
-            BufferedReader br = new BufferedReader(isr);
-            String formData = br.readLine();
-
-            System.out.println(formData);
-            Map <String, String> inputs = FormHelper.parseFormData(formData);
-
-            // TODO: 19.02.19 check if all user/passw is accurate, save session -
-            //  connection with DAO, then redirect to questbook if correct,
-            //  else say info about wrong data for logging in.
-            //  nadpisac errorMsg i wykonac superhandlehttpexchange;
 
             try {
+                String formData = FormHelper.formData(httpExchange);
+                Map <String, String> inputs = FormHelper.parseFormData(formData);
                 String hassh = HashHelper.createHash(inputs.get("password"));
                 boolean verification = loginDAO.checkIfLoginAndPasswordAreCorrect(
                         inputs.get("login"),
                         hassh);
                 if(verification){
-                    //TODO add to session username
                     CookieHelper.setCookie(httpExchange, CookieHelper.COOKIE_USERNAME, inputs.get("login"));
                     httpExchange.getResponseHeaders().set("Location", "/guestbook");
                     httpExchange.sendResponseHeaders(302,0);

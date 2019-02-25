@@ -16,6 +16,12 @@ public class CookieHelper {
         httpExchange.getResponseHeaders().add("Set-Cookie", cookie.get().toString());
     }
 
+    public static void deleteCookie(HttpExchange httpExchange, String cookieName){
+        Optional<HttpCookie> cookie = Optional.of(new HttpCookie(cookieName, ""));
+        httpExchange.getResponseHeaders().add("Set-Cookie",
+                cookie.get().toString() + "; expires=Thu, 01 Jan 1970 00:00:00 GMT");
+    }
+
     public static Optional<HttpCookie> getCookie(HttpExchange httpExchange, String cookieName){
         String cookieStr = httpExchange.getRequestHeaders().getFirst("Cookie");
         List<HttpCookie> cookies = parseCookies(cookieStr);

@@ -17,7 +17,7 @@ public class MessageDAOfromPSQL implements MessageDAO {
 
         ResultSet rs = dbcon.query(query, new String[0]);
 
-        if(rs.next()){
+        while(rs.next()){
             result.add(new Message(rs.getString("user"), rs.getDate("date"),
                     rs.getString("text")));
         }
@@ -27,7 +27,7 @@ public class MessageDAOfromPSQL implements MessageDAO {
 
     @Override
     public void addNewMessage(Message message) throws Exception{
-        String query = "INSERT INTO messages (user, date, text) VALUES (?, ?, ?);";
+        String query = "INSERT INTO messages (\"user\", \"date\", \"text\") VALUES (?, ?::date, ?);";
         String[] queryAttr = {message.getUser(), message.getDate().toString(), message.getText()};
         dbcon.updateSQL(query, queryAttr);
 

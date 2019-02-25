@@ -9,6 +9,15 @@ CREATE TABLE logins
 INSERT INTO logins(login, password) VALUES ('superuser', '123');
 INSERT INTO logins(login, password) VALUES ('dummyuser', '321');
 
+
+CREATE TABLE messages
+(
+  id serial NOT NULL PRIMARY KEY,
+  "user" varchar NOT NULL,
+  "date" date NOT NULL,
+  "text" varchar NOT NULL
+);
+
 -- CREATE TABLE mentors
 -- (
 --     id serial NOT NULL PRIMARY KEY,

@@ -11,6 +11,6 @@ public class Index extends TemplateHandler {
 
     @Override
     protected void setupModel(JtwigModel model) {
-
     }
+
 }

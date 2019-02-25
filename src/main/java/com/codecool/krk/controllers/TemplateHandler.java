@@ -7,6 +7,7 @@ import org.jtwig.JtwigTemplate;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 
 public abstract class TemplateHandler implements HttpHandler {
@@ -29,10 +30,14 @@ public abstract class TemplateHandler implements HttpHandler {
 
         // render a template to a string
         String response = template.render(model);
+        System.out.println(response);
 
+//        httpExchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
-        os.write(response.getBytes());
+        byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
+        os.write(bytes);
+        System.out.println("dupa");
         os.close();
     }
 
